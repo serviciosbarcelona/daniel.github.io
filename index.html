@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANIEL | Pintura & Restauración de Paredes en Barcelona</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#d97706',
+                            600: '#b45309',
+                        },
+                        dark: {
+                            base: '#0B0F17',
+                            card: '#131924',
+                            border: '#1E2638',
+                            hover: '#182030'
+                        },
+                        whatsapp: {
+                            DEFAULT: '#25D366',
+                            hover: '#1DA851'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0F17;
+            color: #E2E8F0;
+        }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .border-gold-glow {
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+        }
+        .wa-glow {
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.35);
+        }
+        /* Custom Before/After Slider */
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+        .img-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .img-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            object-fit: cover;
+            border-right: 3px solid #f59e0b;
+            z-index: 10;
+        }
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: #f59e0b;
+            z-index: 20;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: #f59e0b;
+            color: #0B0F17;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-gold-500 selection:text-black">
+
+    <div class="bg-dark-card border-b border-dark-border py-2.5 px-4 text-xs font-medium text-slate-300">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Servicio en Barcelona y Área Metropolitana</span>
+            </div>
+            <div class="flex items-center space-x-4 sm:space-x-6 text-slate-300 text-xs">
+                <a href="https://wa.me/34690788076?text=Hola%20Servicio%20T%C3%A9cnico%20DANIEL,%20necesito%20consulta" target="_blank" class="hover:text-gold-400 transition flex items-center">
+                    <i class="fa-brands fa-whatsapp text-whatsapp mr-1.5"></i>
+                    <span class="font-bold">Servicio Técnico:</span>&nbsp;+34 690 78 80 76
+                </a>
+                <a href="https://wa.me/34632734669?text=Hola%20Atenci%C3%B3n%20al%20Cliente%20DANIEL,%20deseo%20informaci%C3%B3n" target="_blank" class="hidden md:flex hover:text-gold-400 transition items-center">
+                    <i class="fa-brands fa-whatsapp text-whatsapp mr-1.5"></i>
+                    <span class="font-bold">Atención al Cliente:</span>&nbsp;+34 632 73 46 69
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-dark-base/90 backdrop-blur-xl border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 bg-gradient-to-br from-gold-400 to-gold-600 rounded-xl flex items-center justify-center text-slate-950 font-black text-2xl tracking-tighter shadow-lg group-hover:scale-105 transition-transform">
+                    D
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-wider text-white leading-none">DANIEL</span>
+                    <span class="text-[10px] font-bold tracking-[0.25em] text-gold-400 uppercase mt-1">Pintura & Restauración</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#diagnostico" class="hover:text-gold-400 transition-colors">Diagnóstico</a>
+                <a href="#transformaciones" class="hover:text-gold-400 transition-colors">Antes y Después</a>
+                <a href="#proceso" class="hover:text-gold-400 transition-colors">Proceso Técnico</a>
+                <a href="#materiales" class="hover:text-gold-400 transition-colors">Materiales</a>
+                <a href="#cotizacion" class="text-gold-400 hover:text-amber-300 font-bold transition-colors"><i class="fa-solid fa-calculator mr-1"></i>Cotizador WhatsApp</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="https://wa.me/34690788076?text=Hola%20DANIEL,%20deseo%20solicitar%20una%20cotizacion" target="_blank" rel="noopener noreferrer" class="bg-whatsapp hover:bg-whatsapp-hover text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-lg flex items-center space-x-2 transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Técnico</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative py-16 lg:py-24 overflow-hidden border-b border-dark-border">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-dark-card border border-gold-500/30 px-4 py-2 rounded-full text-xs font-semibold text-gold-400">
+                        <i class="fa-solid fa-gem text-amber-400"></i>
+                        <span>Sin Precios Estándar • Cotización Técnica 100% Personalizada</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+                        Restauración de Paredes en Barcelona. <br class="hidden sm:inline">
+                        <span class="text-gold-gradient">Resultado Impecable.</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        ¿Tus paredes sufren grietas, humedades o desconchados? En <strong>DANIEL Pintura & Restauración</strong> solucionamos el problema de raíz antes de pintar para un acabado duradero y perfecto.
+                    </p>
+
+                    <!-- Core Services Cards -->
+                    <div class="grid sm:grid-cols-3 gap-3 pt-2 text-left">
+                        <div class="bg-dark-card p-4 rounded-2xl border border-dark-border">
+                            <span class="text-2xl mb-1 block">🏠</span>
+                            <h3 class="font-bold text-white text-sm">Empastado Premium</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Paredes lisas y totalmente enrasadas.</p>
+                        </div>
+                        <div class="bg-dark-card p-4 rounded-2xl border border-dark-border">
+                            <span class="text-2xl mb-1 block">✨</span>
+                            <h3 class="font-bold text-white text-sm">Maestro Pintor</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Tratamiento técnico antimoho y sellado.</p>
+                        </div>
+                        <div class="bg-dark-card p-4 rounded-2xl border border-dark-border">
+                            <span class="text-2xl mb-1 block">🏗️</span>
+                            <h3 class="font-bold text-white text-sm">Casas y Locales</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Rapidez, orden y limpieza absoluta.</p>
+                        </div>
+                    </div>
+
+                    <!-- Dual WhatsApp CTA Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="https://wa.me/34690788076?text=Hola%20Servicio%20T%C3%A9cnico%20DANIEL,%20deseo%20cotizacion%20para%20reparacion%20de%20paredes" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center bg-whatsapp hover:bg-whatsapp-hover text-white px-7 py-4 rounded-2xl text-sm font-extrabold shadow-xl transition-all transform hover:-translate-y-0.5 wa-glow">
+                            <i class="fa-brands fa-whatsapp text-xl mr-2.5"></i>
+                            Servicio Técnico (+34 690 78 80 76)
+                        </a>
+
+                        <a href="https://wa.me/34632734669?text=Hola%20Atenci%C3%B3n%20al%20Cliente%20DANIEL,%20busco%20informacion%20general" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center bg-dark-card hover:bg-dark-hover text-white border border-dark-border px-6 py-4 rounded-2xl text-sm font-semibold transition">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-lg mr-2"></i>
+                            Atención al Cliente (+34 632 73 46 69)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Card: Contact Dispatcher -->
+                <div class="lg:col-span-5">
+                    <div class="bg-dark-card rounded-3xl p-6 sm:p-8 border border-dark-border border-gold-glow relative">
+                        <div class="flex items-center justify-between pb-6 border-b border-dark-border">
+                            <div>
+                                <span class="text-xs font-extrabold uppercase tracking-wider text-gold-400">Canales Directos</span>
+                                <h3 class="text-xl font-bold text-white mt-0.5">DANIEL WhatsApp Directo</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-gold-500/10 text-gold-400 rounded-2xl flex items-center justify-center text-xl font-black border border-gold-500/20">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                        </div>
+
+                        <div class="py-6 space-y-4">
+                            <div class="p-4 rounded-2xl bg-dark-base border border-dark-border space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-extrabold text-gold-400 uppercase">🛠️ Servicio Técnico</span>
+                                    <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-bold">Diagnóstico & Obras</span>
+                                </div>
+                                <p class="text-xs text-slate-300">Presupuestos técnicos, envío de fotos de humedades y grietas.</p>
+                                <a href="https://wa.me/34690788076?text=Hola%20Servicio%20T%C3%A9cnico%20DANIEL,%20deseo%20enviar%20fotos%20de%20mi%20pared" target="_blank" class="inline-flex items-center text-xs font-bold text-whatsapp hover:underline pt-1">
+                                    Chat Técnico: +34 690 78 80 76 &rarr;
+                                </a>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-dark-base border border-dark-border space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-extrabold text-gold-400 uppercase">💬 Atención al Cliente</span>
+                                    <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-bold">Consultas Generales</span>
+                                </div>
+                                <p class="text-xs text-slate-300">Dudas sobre disponibilidad, zonas de cobertura e información general.</p>
+                                <a href="https://wa.me/34632734669?text=Hola%20Atenci%C3%B3n%20al%20Cliente%20DANIEL,%20tengo%20una%20consulta" target="_blank" class="inline-flex items-center text-xs font-bold text-whatsapp hover:underline pt-1">
+                                    Chat Comercial: +34 632 73 46 69 &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="transformaciones" class="py-16 md:py-24 bg-dark-base border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-gold-400 font-bold text-xs uppercase tracking-widest bg-gold-500/10 px-3.5 py-1 rounded-full border border-gold-500/20">Resultados Visibles</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Transformación de Paredes con Grietas y Humedad</h2>
+                <p class="text-slate-400 mt-2 text-sm sm:text-base">Desliza para ver la diferencia entre la pared dañada y el acabado alisado final.</p>
+            </div>
+
+            <!-- Before/After Slider Container -->
+            <div class="max-w-4xl mx-auto rounded-3xl overflow-hidden border border-dark-border shadow-2xl relative bg-dark-card">
+                <div class="before-after-container aspect-[16/10] sm:aspect-[16/9] w-full" id="ba-slider">
+                    <!-- After Image (Background) -->
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Paredes Reparadas y Pintadas DANIEL" class="img-after">
+                    
+                    <!-- Before Image (Overlay clipped) -->
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80" alt="Paredes Con Grietas y Humedad" class="img-before" id="ba-before-img">
+
+                    <!-- Slider Control Handle -->
+                    <div class="slider-handle" id="ba-handle">
+                        <div class="slider-button">
+                            <i class="fa-solid fa-arrows-left-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Labels -->
+                    <span class="absolute top-4 left-4 bg-slate-950/80 text-red-400 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold border border-red-500/30 z-30">ANTES: Deterioro y grietas</span>
+                    <span class="absolute top-4 right-4 bg-slate-950/80 text-emerald-400 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold border border-emerald-500/30 z-30">DESPUÉS: Restauración DANIEL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="diagnostico" class="py-16 md:py-24 bg-dark-card border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-red-500/10 text-red-400 text-xs font-bold px-3 py-1 rounded-full border border-red-500/20">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span>Honestidad Profesional Sincera</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                        ¿Por qué reparar antes de pintar?
+                    </h2>
+
+                    <div class="p-4 bg-red-950/40 border-l-4 border-red-500 rounded-r-2xl border border-red-900/30">
+                        <p class="text-red-200 font-bold text-sm">
+                            Pintar sobre paredes en mal estado es tirar el dinero.
+                        </p>
+                        <p class="text-red-300 text-xs mt-1">
+                            La pintura nueva se estropeará en poco tiempo si la base no se sanea de raíz.
+                        </p>
+                    </div>
+
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Si la humedad viene de una fuga de bajante o de cubierta, hay que resolver el origen antes: te lo decimos claro aunque signifique que el trabajo se aplaza.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-dark-base border border-dark-border">
+                            <span class="text-xs font-bold text-gold-400 uppercase block mb-1">Duración</span>
+                            <span class="text-white font-extrabold text-sm">1 - 2 días</span>
+                            <p class="text-slate-400 text-[11px] mt-1">En reparaciones puntuales y saneados.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-dark-base border border-dark-border">
+                            <span class="text-xs font-bold text-gold-400 uppercase block mb-1">Secado Técnico</span>
+                            <span class="text-white font-extrabold text-sm">48 - 72 h</span>
+                            <p class="text-slate-400 text-[11px] mt-1">Para humedades tratadas antes de pintar.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pathology Cards -->
+                <div class="lg:col-span-6 space-y-4">
+                    <h3 class="text-lg font-bold text-white mb-2">Problemas que solucionamos:</h3>
+
+                    <div class="bg-dark-base p-4 rounded-2xl border border-dark-border flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg shrink-0">🧱</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Grietas</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">Por movimientos del edificio o asentamientos de la estructura.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-base p-4 rounded-2xl border border-dark-border flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold text-lg shrink-0">💧</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Humedades</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">Por filtración, condensación o capilaridad.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-base p-4 rounded-2xl border border-dark-border flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center font-bold text-lg shrink-0">🍂</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Desconchados</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">Por mal estado o sopladura de la pintura anterior.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-base p-4 rounded-2xl border border-dark-border flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-slate-500/10 text-slate-300 flex items-center justify-center font-bold text-lg shrink-0">🕳️</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Agujeros & Manchas</h4>
+                            <p class="text-xs text-slate-400 mt-0.5">Reparación de clavos, tacos, golpes o cercos de humo, grasa y agua.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="proceso" class="py-16 md:py-24 bg-dark-base border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-400 font-bold text-xs uppercase tracking-widest bg-gold-500/10 px-3.5 py-1 rounded-full border border-gold-500/20">Metodología Paso a Paso</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Proceso de Restauración Profesional</h2>
+            </div>
+
+            <div class="grid md:grid-cols-5 gap-4">
+                
+                <div class="bg-dark-card p-5 rounded-2xl border border-dark-border">
+                    <span class="w-9 h-9 rounded-xl bg-gold-500/20 text-gold-400 font-black flex items-center justify-center text-sm mb-3">1</span>
+                    <h3 class="font-bold text-white text-sm mb-1">Diagnóstico de la Causa</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Comprobamos con medidor de humedad si el muro está mojado por dentro o solo manchado en superficie.</p>
+                </div>
+
+                <div class="bg-dark-card p-5 rounded-2xl border border-dark-border">
+                    <span class="w-9 h-9 rounded-xl bg-gold-500/20 text-gold-400 font-black flex items-center justify-center text-sm mb-3">2</span>
+                    <h3 class="font-bold text-white text-sm mb-1">Saneado</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Retiramos todo el material suelto o soplado hasta llegar a soporte firme, aunque el hueco crezca.</p>
+                </div>
+
+                <div class="bg-dark-card p-5 rounded-2xl border border-dark-border">
+                    <span class="w-9 h-9 rounded-xl bg-gold-500/20 text-gold-400 font-black flex items-center justify-center text-sm mb-3">3</span>
+                    <h3 class="font-bold text-white text-sm mb-1">Tratamiento</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Fungicida antimoho en humedades, mortero de reparación en huecos y malla en grietas con movimiento.</p>
+                </div>
+
+                <div class="bg-dark-card p-5 rounded-2xl border border-dark-border">
+                    <span class="w-9 h-9 rounded-xl bg-gold-500/20 text-gold-400 font-black flex items-center justify-center text-sm mb-3">4</span>
+                    <h3 class="font-bold text-white text-sm mb-1">Reconstrucción</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Rellenamos por capas y enrasamos con la pared existente para que no quede parche visible.</p>
+                </div>
+
+                <div class="bg-dark-card p-5 rounded-2xl border border-dark-border">
+                    <span class="w-9 h-9 rounded-xl bg-gold-500/20 text-gold-400 font-black flex items-center justify-center text-sm mb-3">5</span>
+                    <h3 class="font-bold text-white text-sm mb-1">Sellado e Igualado</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Imprimación antimanchas al aceite en cercos y repintado de la pared completa, nunca solo del parche.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materiales" class="py-16 md:py-24 bg-dark-card border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-gold-400 font-bold text-xs uppercase tracking-widest bg-gold-500/10 px-3.5 py-1 rounded-full border border-gold-500/20">Alta Calidad</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Materiales Específicos que Usamos</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-dark-base p-6 rounded-2xl border border-dark-border">
+                    <div class="text-3xl mb-3">🛢️</div>
+                    <h3 class="font-bold text-white text-base mb-2">Imprimación Antimanchas</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">La única que bloquea el cerco amarillo de una humedad antigua.</p>
+                </div>
+
+                <div class="bg-dark-base p-6 rounded-2xl border border-dark-border">
+                    <div class="text-3xl mb-3">🧪</div>
+                    <h3 class="font-bold text-white text-base mb-2">Fungicida Antimoho</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">De aplicación previa para desinfectar e inhibir esporas profundas.</p>
+                </div>
+
+                <div class="bg-dark-base p-6 rounded-2xl border border-dark-border">
+                    <div class="text-3xl mb-3">🧱</div>
+                    <h3 class="font-bold text-white text-base mb-2">Mortero de Reparación</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">De fraguado rápido para rellenos resistentes e inalterables.</p>
+                </div>
+
+                <div class="bg-dark-base p-6 rounded-2xl border border-dark-border">
+                    <div class="text-3xl mb-3">🕸️</div>
+                    <h3 class="font-bold text-white text-base mb-2">Malla & Masilla Elástica</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Malla de fibra sintética para absorción de grietas con movimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cotizacion" class="py-16 md:py-24 bg-dark-base relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10">
+                <span class="text-gold-400 font-bold text-xs uppercase tracking-widest bg-gold-500/10 px-3.5 py-1 rounded-full border border-gold-500/20">Atención Personalizada</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Generador de Cotización para WhatsApp</h2>
+                <p class="text-slate-400 text-sm mt-2">Selecciona las opciones de tu pared y elige a qué número enviar tu consulta directamente.</p>
+            </div>
+
+            <div class="bg-dark-card rounded-3xl p-6 sm:p-10 border border-dark-border shadow-2xl space-y-8">
+                
+                <div>
+                    <label class="block font-bold text-white text-sm mb-3">1. Problema en tu pared:</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <button type="button" onclick="selectQuoteProblem('Grietas por asentamiento', this)" class="q-prob-btn active p-3.5 rounded-xl border text-xs font-bold text-left bg-gold-500/10 border-gold-500 text-gold-400">
+                            🧱 Grietas
+                        </button>
+                        <button type="button" onclick="selectQuoteProblem('Humedades o Moho', this)" class="q-prob-btn p-3.5 rounded-xl border text-xs font-bold text-left bg-dark-base border-dark-border text-slate-300">
+                            💧 Humedades
+                        </button>
+                        <button type="button" onclick="selectQuoteProblem('Desconchados de pintura', this)" class="q-prob-btn p-3.5 rounded-xl border text-xs font-bold text-left bg-dark-base border-dark-border text-slate-300">
+                            🍂 Desconchados
+                        </button>
+                        <button type="button" onclick="selectQuoteProblem('Agujeros y Golpes', this)" class="q-prob-btn p-3.5 rounded-xl border text-xs font-bold text-left bg-dark-base border-dark-border text-slate-300">
+                            🕳️ Agujeros
+                        </button>
+                        <button type="button" onclick="selectQuoteProblem('Manchas (Humo / Humedad / Grasa)', this)" class="q-prob-btn p-3.5 rounded-xl border text-xs font-bold text-left bg-dark-base border-dark-border text-slate-300">
+                            🟡 Manchas
+                        </button>
+                        <button type="button" onclick="selectQuoteProblem('Alisado y Pintura Completa', this)" class="q-prob-btn p-3.5 rounded-xl border text-xs font-bold text-left bg-dark-base border-dark-border text-slate-300">
+                            🎨 Pintura General
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-white text-sm mb-3">2. Superficie o estancia:</label>
+                    <div class="grid sm:grid-cols-3 gap-3">
+                        <button type="button" onclick="selectQuoteScope('Zona / Pared Puntual', this)" class="q-scope-btn active p-4 rounded-xl border text-xs font-bold text-left bg-gold-500/10 border-gold-500 text-gold-400">
+                            <div class="text-sm font-extrabold mb-1">Zona Puntual</div>
+                            <div class="text-slate-400 font-normal">Una pared o grieta específica</div>
+                        </button>
+                        <button type="button" onclick="selectQuoteScope('Habitación o Estancia Completa', this)" class="q-scope-btn p-4 rounded-xl border text-xs font-bold text-left bg-dark-base border-dark-border text-slate-300">
+                            <div class="text-sm font-extrabold mb-1">Estancia Completa</div>
+                            <div class="text-slate-400 font-normal">Paredes y techo de una habitación</div>
+                        </button>
+                        <button type="button" onclick="selectQuoteScope('Vivienda Completa o Local Comercial', this)" class="q-scope-btn p-4 rounded-xl border text-xs font-bold text-left bg-dark-base border-dark-border text-slate-300">
+                            <div class="text-sm font-extrabold mb-1">Vivienda o Local</div>
+                            <div class="text-slate-400 font-normal">Múltiples estancias o local</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dual Dispatcher Link Options -->
+                <div class="bg-dark-base p-6 rounded-2xl border border-dark-border space-y-4">
+                    <div class="text-sm font-bold text-white">
+                        Solicitud: <span class="text-gold-400" id="summary-prob">Grietas por asentamiento</span> en <span class="text-gold-400" id="summary-scope">Zona / Pared Puntual</span>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-3 pt-2">
+                        <a id="wa-btn-tecnico" href="#" target="_blank" class="bg-whatsapp hover:bg-whatsapp-hover text-white p-4 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition wa-glow">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Enviar a SERVICIO TÉCNICO (+34 690 78 80 76)</span>
+                        </a>
+
+                        <a id="wa-btn-cliente" href="#" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white p-4 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 border border-dark-border transition">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+                            <span>Enviar a ATENCIÓN CLIENTE (+34 632 73 46 69)</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card text-slate-400 py-12 border-t border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 pb-8 border-b border-dark-border">
+                <div>
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-8 h-8 bg-gradient-to-br from-gold-400 to-gold-600 rounded-lg flex items-center justify-center text-slate-950 font-black text-lg">D</div>
+                        <span class="text-xl font-black text-white">DANIEL</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400">
+                        Especialistas en restauración de paredes, saneado de humedades y acabados de pintura en Barcelona.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3">Líneas directas WhatsApp</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>
+                            <a href="https://wa.me/34690788076" target="_blank" class="hover:text-gold-400 transition">
+                                <i class="fa-brands fa-whatsapp text-whatsapp mr-1.5"></i> <strong>Servicio Técnico:</strong> +34 690 78 80 76
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/34632734669" target="_blank" class="hover:text-gold-400 transition">
+                                <i class="fa-brands fa-whatsapp text-whatsapp mr-1.5"></i> <strong>Atención al Cliente:</strong> +34 632 73 46 69
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3">Compromiso DANIEL</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Evaluamos técnicamente tu caso sin presupuestos estándar ficticios para ofrecerte la mejor garantía.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-6 text-center text-xs text-slate-500">
+                &copy; <span id="current-year"></span> DANIEL Pintura & Restauración. Barcelona.
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-3">
+        <a href="https://wa.me/34690788076?text=Hola%20Servicio%20T%C3%A9cnico%20DANIEL" target="_blank" class="bg-whatsapp hover:bg-whatsapp-hover text-white px-4 py-2.5 rounded-full shadow-2xl transition flex items-center space-x-2 text-xs font-bold wa-glow">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            <span>Técnico: +34 690 78 80 76</span>
+        </a>
+
+        <a href="https://wa.me/34632734669?text=Hola%20Atenci%C3%B3n%20al%20Cliente%20DANIEL" target="_blank" class="bg-slate-900 border border-emerald-500/40 hover:bg-slate-800 text-white px-4 py-2.5 rounded-full shadow-2xl transition flex items-center space-x-2 text-xs font-bold">
+            <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+            <span>Atención: +34 632 73 46 69</span>
+        </a>
+    </div>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        /* Before/After Drag Slider Logic */
+        const container = document.getElementById('ba-slider');
+        const beforeImg = document.getElementById('ba-before-img');
+        const handle = document.getElementById('ba-handle');
+        let isDragging = false;
+
+        function setSliderPosition(x) {
+            const rect = container.getBoundingClientRect();
+            let position = ((x - rect.left) / rect.width) * 100;
+            if (position < 0) position = 0;
+            if (position > 100) position = 100;
+
+            beforeImg.style.width = `${position}%`;
+            handle.style.left = `${position}%`;
+        }
+
+        container.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            setSliderPosition(e.clientX);
+        });
+
+        container.addEventListener('touchstart', () => isDragging = true);
+        window.addEventListener('touchend', () => isDragging = false);
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            setSliderPosition(e.touches[0].clientX);
+        });
+
+        /* WhatsApp Quote Generator Logic */
+        let currentProblem = 'Grietas por asentamiento';
+        let currentScope = 'Zona / Pared Puntual';
+
+        function selectQuoteProblem(problemName, btn) {
+            currentProblem = problemName;
+            document.querySelectorAll('.q-prob-btn').forEach(b => {
+                b.classList.remove('active', 'bg-gold-500/10', 'border-gold-500', 'text-gold-400');
+                b.classList.add('bg-dark-base', 'border-dark-border', 'text-slate-300');
+            });
+            btn.classList.add('active', 'bg-gold-500/10', 'border-gold-500', 'text-gold-400');
+            btn.classList.remove('bg-dark-base', 'border-dark-border', 'text-slate-300');
+            updateQuoteLinks();
+        }
+
+        function selectQuoteScope(scopeName, btn) {
+            currentScope = scopeName;
+            document.querySelectorAll('.q-scope-btn').forEach(b => {
+                b.classList.remove('active', 'bg-gold-500/10', 'border-gold-500', 'text-gold-400');
+                b.classList.add('bg-dark-base', 'border-dark-border', 'text-slate-300');
+            });
+            btn.classList.add('active', 'bg-gold-500/10', 'border-gold-500', 'text-gold-400');
+            btn.classList.remove('bg-dark-base', 'border-dark-border', 'text-slate-300');
+            updateQuoteLinks();
+        }
+
+        function updateQuoteLinks() {
+            document.getElementById('summary-prob').textContent = currentProblem;
+            document.getElementById('summary-scope').textContent = currentScope;
+
+            const msgTecnico = `Hola Servicio Técnico DANIEL Pintura & Restauración, solicito cotización para mis paredes.
+
+• Diagnóstico: ${currentProblem}
+• Extensión: ${currentScope}
+
+¿Podemos revisar la fecha de visita o evaluación?`;
+
+            const msgCliente = `Hola Atención al Cliente DANIEL Pintura & Restauración, solicito información general sobre cotización.
+
+• Problema: ${currentProblem}
+• Espacio: ${currentScope}`;
+
+            document.getElementById('wa-btn-tecnico').href = `https://wa.me/34690788076?text=${encodeURIComponent(msgTecnico)}`;
+            document.getElementById('wa-btn-cliente').href = `https://wa.me/34632734669?text=${encodeURIComponent(msgCliente)}`;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateQuoteLinks();
+        });
+    </script>
+</body>
+</html>
